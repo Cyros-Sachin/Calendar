@@ -2,7 +2,6 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import serverless from "serverless-http";
 
 import eventRoutes from "./routes/eventRoutes.js";
 import goalRoutes from "./routes/goalRoutes.js";
@@ -18,20 +17,12 @@ app.use("/api/events", eventRoutes);
 app.use("/api/goals", goalRoutes);
 app.use("/api/tasks", taskRoutes);
 
-// MongoDB connection — connect only once
-let isConnected = false;
-const connectDB = async () => {
-  if (!isConnected) {
-    await mongoose.connect(process.env.MONGO_URI);
-    isConnected = true;
+const PORT = process.env.PORT || 5000;
+
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
     console.log("MongoDB connected");
-  }
-};
-
-app.use(async (req, res, next) => {
-  await connectDB();
-  next();
-});
-
-// Export as serverless function
-export const handler = serverless(app);
+    app.listen(PORT, () => console.log("Server running on port ${ PORT }"));
+  })
+  .catch((error) => console.log(error)); 
