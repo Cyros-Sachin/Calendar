@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/goals';
+const API_URL = 'https://calendar-seven-weld.vercel.app/api/goals';
 
 export const fetchGoals = createAsyncThunk('goals/fetchGoals', async () => {
   const response = await axios.get(API_URL);

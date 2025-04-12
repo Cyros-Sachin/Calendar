@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/events';
+const API_URL = 'https://calendar-seven-weld.vercel.app/api/events';
 
 export const fetchEvents = createAsyncThunk('events/fetchEvents', async () => {
-    const response = await axios.get('http://localhost:5000/api/events');
+    const response = await axios.get('https://calendar-seven-weld.vercel.app/api/events');
     return response.data.map((event) => ({
         ...event,
         id: event._id, // <-- ADD THIS
@@ -17,7 +17,7 @@ export const addEvent = createAsyncThunk('events/addEvent', async (event) => {
 });
 
 export const updateEvent = createAsyncThunk('events/updateEvent', async (event, { dispatch }) => {
-    const response = await axios.put(`http://localhost:5000/api/events/${event._id}`, event);
+    const response = await axios.put(`https://calendar-seven-weld.vercel.app/api/events/${event._id}`, event);
     dispatch(fetchEvents());   // <-- Refresh the events after updating
     return response.data;
   });
