@@ -1,0 +1,36 @@
+.fc {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Style the Calendar buttons */
+  .fc-button {
+    background-color: #3B82F6; /* Blue 500 */
+    color: white;
+    border: none;
+    border-radius: 0.5rem; /* Rounded corners */
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .fc-button:hover {
+    background-color: #2563EB; /* Darker blue on hover */
+  }
+  
+  .fc-button-primary:not(:disabled).fc-button-active,
+  .fc-button-primary:not(:disabled):active {
+    background-color: #1D4ED8; /* Even darker on click */
+  }
+  
+  .fc-toolbar-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827; /* Dark title */
+  }
+  
+  /* Toolbar background */
+  .fc-toolbar {
+    margin-bottom: 1rem;
+  }
+  
